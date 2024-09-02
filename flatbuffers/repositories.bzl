@@ -4,16 +4,13 @@ These are needed for local dev, and users must install them as well.
 See https://docs.bazel.build/versions/main/skylark/deploying.html#dependencies
 """
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", _http_archive = "http_archive", _http_file = "http_file")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", _http_archive = "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 load("//flatbuffers/private:toolchains_repo.bzl", "PLATFORMS", "toolchains_repo")
 load("//flatbuffers/private:versions.bzl", "PLATFORMS_MAPPING", "TOOL_VERSIONS")
 
 def http_archive(name, **kwargs):
     maybe(_http_archive, name = name, **kwargs)
-
-def http_file(name, **kwargs):
-    maybe(_http_file, name = name, **kwargs)
 
 # WARNING: any changes in this function may be BREAKING CHANGES for users
 # because we'll fetch a dependency which may be different from one that
@@ -31,14 +28,6 @@ def rules_flatbuffers_dependencies():
             "https://github.com/bazelbuild/bazel-skylib/releases/download/1.7.1/bazel-skylib-1.7.1.tar.gz",
             "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.7.1/bazel-skylib-1.7.1.tar.gz",
         ],
-    )
-
-    http_file(
-        name = "com_github_google_flatbuffers",
-        urls = [
-            "https://raw.githubusercontent.com/google/flatbuffers/master/build_defs.bzl",
-        ],
-        downloaded_file_path = "build_defs.bzl",
     )
 
 ########
