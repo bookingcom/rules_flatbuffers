@@ -20,6 +20,10 @@ flatbuffer_library_public(
     name = "monster_fbs_java",
     srcs = ["monster.fbs"],
     outs = [
+        # Bazel expects that we have the full list of generated files, the rule
+        # will output to stderr the generated list of files to stderr. If you
+        # build with --test_output_filter=DO_NOT_MATCH_ANYTHING then you will
+        # get the list of files when it fails
         "MyGame/Sample/Color.java",
         "MyGame/Sample/Equipment.java",
         "MyGame/Sample/EquipmentUnion.java",

@@ -20,6 +20,6 @@ buildifier(
 
 buildifier_test(
     name = "buildifier.test",
-    srcs = ["BUILD"],
+    srcs = ["BUILD.bazel"],
     lint_mode = "warn",
 )
