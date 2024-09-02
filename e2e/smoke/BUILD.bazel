@@ -35,6 +35,10 @@ flatbuffer_library_public(
         "MyGame/Sample/WeaponT.java",
     ],
     language_flag = "--java",
+    # If you're going to build in Windows hosts then you need to have this
+    # defined, otherwise the output directory includes a bunch of non
+    # expected files
+    out_prefix = "flatbuffer-output",
 )
 
 java_library(
