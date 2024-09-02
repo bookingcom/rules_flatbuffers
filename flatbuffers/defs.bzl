@@ -103,7 +103,7 @@ def flatbuffer_library_public(
     ])
 
     genrule_cmd += "; ".join([
-        "pushd $(@D)",
+        "pushd $(@D)/%s" % (out_prefix if len(srcs) > 1 else ""),
         "find . -type f | sort | sed 's!\\./!!g' > ../generated",
         "echo $(OUTS) | tr \" \" \"\n\" | sed \"s!$(@D)/!!g\"| sort > ../expected",
         "diff -u ../expected ../generated",
