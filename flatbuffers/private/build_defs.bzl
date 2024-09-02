@@ -91,9 +91,7 @@ def flatbuffer_library_public(
     )
 
     genrule_cmd = " ".join([
-        "set -x;",
         "set -eou pipefail;",
-        "pwd;",
         "SRCS=($(SRCS));",
         "for f in $${SRCS[@]:0:%s}; do" % len(srcs),
         "OUTPUT_FILE=\"$(OUTS)\" %s $(location @com_bookingcom_rules_flatbuffers//flatbuffers:resolved_toolchain)" % (extra_env),
@@ -109,7 +107,6 @@ def flatbuffer_library_public(
         srcs = srcs + includes,
         outs = outs,
         output_to_bindir = output_to_bindir,
-        # toolchains = ["@com_bookingcom_rules_flatbuffers//flatbuffers:toolchain"],
         tools = ["@com_bookingcom_rules_flatbuffers//flatbuffers:resolved_toolchain"],
         cmd = genrule_cmd,
         compatible_with = compatible_with,
@@ -123,9 +120,7 @@ def flatbuffer_library_public(
             reflection_include_paths = default_include_paths()
         reflection_include_paths_cmd = ["-I %s" % (s) for s in reflection_include_paths]
         reflection_genrule_cmd = " ".join([
-            "set -x;",
             "set -eou pipefail;",
-            "pwd",
             "SRCS=($(SRCS));",
             "for f in $${SRCS[@]:0:%s}; do" % len(srcs),
             "$(location @com_bookingcom_rules_flatbuffers//flatbuffers:resolved_toolchain)",
@@ -153,7 +148,6 @@ def flatbuffer_library_public(
             message = "Generating flatbuffer reflection binary for %s:" % (name),
             visibility = reflection_visibility,
             tools = ["@com_bookingcom_rules_flatbuffers//flatbuffers:resolved_toolchain"],
-            # toolchains = ["@com_bookingcom_rules_flatbuffers//flatbuffers:toolchain"],
         )
         native.filegroup(
             name = "%s_out" % reflection_name,

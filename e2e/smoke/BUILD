@@ -36,4 +36,7 @@ flatbuffer_library_public(
 java_library(
     name = "monster_java",
     srcs = [":monster_fbs_java"],
+    deps = [
+        "@flatbuffers-java//jar",
+    ],
 )
