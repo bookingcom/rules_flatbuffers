@@ -104,9 +104,9 @@ def flatbuffer_library_public(
 
     genrule_cmd += "; ".join([
         "pushd $(@D)",
-        "find . -type f | sort | sed 's!\\./!!g' > $$TMPDIR/generated",
-        "echo $(OUTS) | tr \" \" \"\n\" | sed \"s!$(@D)/!!g\"| sort > $$TMPDIR/expected",
-        "diff -u $$TMPDIR/expected $$TMPDIR/generated",
+        "find . -type f | sort | sed 's!\\./!!g' > ../generated",
+        "echo $(OUTS) | tr \" \" \"\n\" | sed \"s!$(@D)/!!g\"| sort > ../expected",
+        "diff -u ../expected ../generated",
     ])
 
     native.genrule(

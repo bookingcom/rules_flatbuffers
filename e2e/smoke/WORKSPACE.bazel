@@ -8,8 +8,8 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_jar")
 
 http_jar(
     name = "flatbuffers-java",
+    sha256 = "f5b50034a53debda980aca803b8b06949f93a40163bc1db6cd69581d3718e355",
     url = "https://repo1.maven.org/maven2/com/google/flatbuffers/flatbuffers-java/24.3.25/flatbuffers-java-24.3.25.jar",
-    # sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 )
 
 #---SNIP--- Below here is re-used in the workspace snippet published on releases
